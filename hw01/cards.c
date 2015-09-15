@@ -29,7 +29,7 @@ Last Modified: 9/12/2015
 declaring functions
 */
 
-int getCardValue(int * val, int *notX, char *ch, char *prompt);
+void getCardValue(int * val, int *notX, char *ch, char *prompt);
 void getCardName(char *ch, char *prompt);
 void updateCount(int val, int *count);
 int isValid(int val);
@@ -68,7 +68,7 @@ int main () {
 	};
 
 	return 0;
-};
+}
 
 /* Changes the value of variable "val" according to 
    the value in ch, If user types in 'X', 
@@ -80,7 +80,7 @@ int main () {
    prompt: string prompt to display
 */  
 
-int getCardValue(int *val, int *notX, char *ch, char *prompt) {
+void getCardValue(int *val, int *notX, char *ch, char *prompt) {
 	switch (ch[0]) {
 		case 'K':
 		case 'Q':
@@ -99,7 +99,7 @@ int getCardValue(int *val, int *notX, char *ch, char *prompt) {
 				puts(prompt);
 			} 
 	}
-};
+}
 
 /* Asks for user's input and puts the reply in a given buffer
 
@@ -111,7 +111,7 @@ int getCardValue(int *val, int *notX, char *ch, char *prompt) {
 void getCardName(char * ch, char * prompt) {
 	puts(prompt);
 	scanf("%2s", ch);
-};
+}
 
 /* Updates the count and prints out the value of 'count'
 
@@ -122,7 +122,7 @@ void updateCount(int val, int * count) {
 	if ((val > 2) && (val < 7)) (*count)++;
 	if (val == 10) (*count)--;
 	printf("current count: %i\n", *count);
-};
+}
 
 /* this function checks whether user's input is valid
 
@@ -132,4 +132,4 @@ void updateCount(int val, int * count) {
 */
 int isValid(int val) {
 	return (val > 1 && val <= 10);
-};
+}
