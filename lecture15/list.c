@@ -49,21 +49,52 @@ int pop(Node **head) {
 
 // Add a new element to the beginning of the list.
 void push(Node **head, int val) {
-    // FILL THIS IN!
+    Node *new_node = make_node(int val, head);
+    *head = new_node;    
 }
 
 // Remove the first element with the given value; return the number
 // of nodes removed.
 int remove_by_value(Node **head, int val) {
-    // FILL THIS IN!
+    Node *i = *head;
+
+    if (i == NULL) return 0;
+
+    if (i -> val == val) {
+        pop(head);
+        return 1;
+    }
+
+    for (; i->next != NULL; i = i -> next) {
+        if (i -> next -> val == val) {
+            pop(i -> next);
+            return 1;
+        }
+    }
+
     return 0;
 }
 
 // Reverse the elements of the list without allocating new nodes.
 void reverse(Node **head) {
-    // FILL THIS IN!
-}
+    Node *node = *head;
+    Node *next, *temp;
 
+    if (node == NULL || node->next == NULL) {
+    return;
+    }
+
+    next = node->next;
+    node->next = NULL;
+
+    while (next != NULL) {
+    temp = next->next;
+    next->next = node;
+    node = next;
+    next = temp;
+    }
+    *head = node;
+}
 
 int main() {
     Node *test_list = make_node(1, NULL);
